@@ -1,0 +1,15 @@
+header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1rem 2rem;
+}
+
+.logo {
+    width: 12.5rem;
+}
