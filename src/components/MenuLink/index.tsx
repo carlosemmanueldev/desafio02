@@ -1,7 +1,14 @@
+import styles from './MenuLink.module.css';
 import { NavLink } from "react-router-dom";
+import React from "react";
 
-export default function MenuLink({ children, to } ) {
+interface MenuLinkProps {
+    to: string;
+    children: React.ReactNode;
+  }
+
+export default function MenuLink({ children, to }: MenuLinkProps ) {
     return(
-        <NavLink to={to} >{children}</NavLink>
+        <NavLink className={styles.link} to={to} >{children}</NavLink>
     )
 }
