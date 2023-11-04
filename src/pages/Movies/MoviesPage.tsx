@@ -10,8 +10,8 @@ interface Movies {
 
 const MoviesPage: React.FC = () => {
   const [movies, setMovies] = useState<Movies[]>([]);
-  const apiKey = "07cb34c8bbdd22eabcc7ab0db4591eeb";
-  const popular = "https://api.themoviedb.org/3/movie/popular";
+  const apiKey = import.meta.env.VITE_API_KEY;
+  const popular = import.meta.env.VITE_API;
 
   useEffect(() => {
     fetchData();
@@ -31,7 +31,7 @@ const MoviesPage: React.FC = () => {
           <h2>{item.title}</h2>
           {item.poster_path && (
             <img
-              src={`https://api.themoviedb.org/3/movie/${item.poster_path}`}
+              src={`https://image.tmdb.org/t/p/w500/${item.poster_path}`}
               alt={`${item.title} Poster`}
             />
           )}
