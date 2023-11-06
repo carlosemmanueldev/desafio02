@@ -2,8 +2,7 @@ import Menu from "../../components/Menu";
 import classes from "./Home.module.css";
 import Highlight, {MovieProps} from "../../components/Highlight/Highlight.tsx";
 import {useEffect, useState} from "react";
-
-const IMG_URL: string = import.meta.env.VITE_IMG;
+import Background from "../../components/UI/Background.tsx";
 
 function Home() {
     const [movie, setMovie] = useState({} as MovieProps);
@@ -30,10 +29,9 @@ function Home() {
     }
 
     return (
-        <div className={classes.o}>
-            <div
-                style={{backgroundImage: `url(${IMG_URL}${movie.backdrop_path})`}}
-                className={classes.background}
+        <>
+            <Background
+                image={movie.backdrop_path}
             >
                 <Menu/>
                 <Highlight
@@ -46,7 +44,7 @@ function Home() {
                     hasAdd
                     hasFav
                 />
-            </div>
+            </Background>
 
             <div className={classes.carousel}>
                 <Menu/>
@@ -54,7 +52,7 @@ function Home() {
                 <Menu/>
                 <Menu/>
             </div>
-        </div>
+        </>
     )
 }
 
