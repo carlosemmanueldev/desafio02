@@ -20,7 +20,7 @@ function App() {
                 <Route path="/" element={<PrivateRoute component={Home} />} />
                 <Route path="/actors" element={<PrivateRoute component={Actors} />} />
                 <Route path="/tvshows" element={<PrivateRoute component={TvShows} />} />
-                <Route path="/movies/:id" element={<PrivateRoute component={Movie} />} />
+                <Route path="/movies" element={<PrivateRoute component={Movie} />} />
                 <Route path="/collections" element={<PrivateRoute component={Collections} />} />
                 <Route path="/search" element={<PrivateRoute component={Search} />} />
                 <Route path="/mylist" element={<PrivateRoute component={MyList} />} />

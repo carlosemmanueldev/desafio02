@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
-import MovieCard from '../../components/MovieCard/MovieCard';
+import MovieCard from "../../components/MovieCard/MovieCard";
+import Menu from "../../components/Menu/Menu";
 
-import '../Movies/Movies.module.css';
+import "../Movies/Movies.module.css";
 
 const moviesURL = import.meta.env.VITE_API;
 const apiKey = import.meta.env.VITE_API_KEY;
@@ -17,7 +18,7 @@ interface Movie {
 const Home = () => {
   const [topMovies, setTopMovies] = useState<Movie[]>([]);
 
-  const getTopRatedMovies = async (url:string) => {
+  const getTopRatedMovies = async (url: string) => {
     const res = await fetch(url);
     const data = await res.json();
     setTopMovies(data.results);
@@ -32,11 +33,34 @@ const Home = () => {
   console.log(topMovies);
 
   return (
-    <div className="container">
-      <h2 className="title">Melhores filmes:</h2>
-      <div className="movies-container">
-        {topMovies.length > 0 &&
-          topMovies.map((movie) => <MovieCard key={movie.id} movie={movie} />)}
+    <div>
+      <Menu />
+      <div className="container">
+        <h2 className="title">Coleções de Hallowen</h2>
+        <div className="movies-container">
+          {topMovies.length > 0 &&
+            topMovies.map((movie) => (
+              <MovieCard key={movie.id} movie={movie} />
+            ))}
+        </div>
+      </div>
+      <div className="container">
+        <h2 className="title">Séries em alta</h2>
+        <div className="movies-container">
+          {topMovies.length > 0 &&
+            topMovies.map((movie) => (
+              <MovieCard key={movie.id} movie={movie} />
+            ))}
+        </div>
+      </div>
+      <div className="container">
+        <h2 className="title">Filmes em Alta</h2>
+        <div className="movies-container">
+          {topMovies.length > 0 &&
+            topMovies.map((movie) => (
+              <MovieCard key={movie.id} movie={movie} />
+            ))}
+        </div>
       </div>
     </div>
   );
