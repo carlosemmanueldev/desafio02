@@ -14,8 +14,9 @@ import {
     getNumberOfMovies,
     getNumberOfSeasons, getRating,
     getReleaseYear
-} from "../../utils/getDetails.tsx";
+} from "../../utils/Details.tsx";
 import HighlightDescription from "./HighlightDescription.tsx";
+import {SerieProps} from "../../pages/TvShows";
 
 export interface MovieGenres {
     id: number;
@@ -35,7 +36,8 @@ export interface MovieProps {
 }
 
 export interface HighlightProps {
-    movie: MovieProps,
+    data: MovieProps | SerieProps,
+    isMovie?: boolean,
     type: string,
     descriptionPosition: string,
     hasGenre?: boolean,
@@ -47,12 +49,12 @@ export interface HighlightProps {
 }
 
 function Highlight(props: HighlightProps) {
-    const releaseYear = getReleaseYear(props.movie.release_date);
-    const duration = getDuration(props.movie.runtime);
-    const genres = getGenres(props.movie.genres);
-    const numberOfSeasons = getNumberOfSeasons(props.movie.number_of_seasons);
-    const numberOfMovies = getNumberOfMovies(props.movie.number_of_movies);
-    const rating = getRating(props.movie.vote_average);
+    const releaseYear = getReleaseYear(props.isMovie ? (props.data as MovieProps).release_date : (props.data as SerieProps).first_air_date);
+    const duration = getDuration(props.data.runtime);
+    const genres = getGenres(props.data.genres);
+    const numberOfSeasons = getNumberOfSeasons(props.data.number_of_seasons);
+    const numberOfMovies = getNumberOfMovies(props.data.number_of_movies);
+    const rating = getRating(props.data.vote_average);
     const [favorite, setFavorite] = useState(false);
     const [added, setAdded] = useState(false);
 
@@ -82,13 +84,13 @@ function Highlight(props: HighlightProps) {
     return (
         <section>
             <div className={classes.info}>
-                <h1>{props.movie.title}</h1>
+                <h1>{props.isMovie ? (props.data as MovieProps).title : (props.data as SerieProps).name}</h1>
                 <p className="body-regular">{releaseYear} • {secondParameter()}</p>
                 {props.hasGenre && <p className="caption">{genres}</p>}
             </div>
 
             {props.descriptionPosition === 'top' ?
-                <HighlightDescription description={props.movie.overview}/>
+                <HighlightDescription description={props.data.overview}/>
                 : null}
 
             <div className={classes.actions}>
@@ -109,8 +111,8 @@ function Highlight(props: HighlightProps) {
                 {props.hasAdd &&
                     <ButtonCircle
                         type="button"
-                        favoriteOrAdded={favorite}
                         onClick={toggleFavorite}
+                        favoriteOrAdded={favorite}
                     >
                         {favorite ? <BsCheck2/> : <IoMdStar/>}
                     </ButtonCircle>
@@ -118,7 +120,7 @@ function Highlight(props: HighlightProps) {
             </div>
 
             {props.descriptionPosition === 'bottom' ?
-                <HighlightDescription description={props.movie.overview}/>
+                <HighlightDescription description={props.data.overview}/>
                 : null}
         </section>
     )

@@ -3,15 +3,18 @@ import classes from "./Home.module.css";
 import Highlight, {MovieProps} from "../../components/Highlight/Highlight.tsx";
 import {useEffect, useState} from "react";
 import Background from "../../components/UI/Background.tsx";
+import Loading from "../../components/UI/Loading.tsx";
 
 function Home() {
     const [movie, setMovie] = useState({} as MovieProps);
+    const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
         requestMovie();
     }, []);
 
     async function requestMovie() {
+        setIsLoading(true);
         try {
             const response = await fetch('https://api.themoviedb.org/3/movie/550?language=pt-Br', {
                 method: 'GET',
@@ -23,36 +26,41 @@ function Home() {
 
             const resData = await response.json();
             setMovie(resData);
+            setTimeout(() => {
+                setIsLoading(false);
+            }, 500);
         } catch (e: any) {
             throw new Error(e.statusText);
         }
     }
 
     return (
-        <>
-            <Background
-                image={movie.backdrop_path}
-            >
-                <Menu/>
-                <Highlight
-                    movie={movie}
-                    type={'duration'}
-                    descriptionPosition={'top'}
-                    hasGenre
-                    hasWatchNow
-                    hasMoreInfo
-                    hasAdd
-                    hasFav
-                />
-            </Background>
+        isLoading ? <Loading/> :
+            <>
+                <Background
+                    image={movie.backdrop_path}
+                >
+                    <Menu/>
+                    <Highlight
+                        data={movie}
+                        isMovie
+                        type={'duration'}
+                        descriptionPosition={'top'}
+                        hasGenre
+                        hasWatchNow
+                        hasMoreInfo
+                        hasAdd
+                        hasFav
+                    />
+                </Background>
 
-            <div className={classes.carousel}>
-                <Menu/>
-                <Menu/>
-                <Menu/>
-                <Menu/>
-            </div>
-        </>
+                <div className={classes.carousel}>
+                    <Menu/>
+                    <Menu/>
+                    <Menu/>
+                    <Menu/>
+                </div>
+            </>
     )
 }
 
