@@ -34,18 +34,16 @@ function TvShows() {
         const choosenSerie = chooseItem(popularSeries.results);
         const serieDetails = await getDetails('tv', choosenSerie.id);
         setSerie(serieDetails);
-        setTimeout(() => {
-            setIsLoading(false);
-        }, 500);
+        setIsLoading(false);
     }
 
     return (
         isLoading ? <Loading/> :
             <>
-                <Background image={serie.backdrop_path}>
+                <Background image={serie!.backdrop_path}>
                     <Menu/>
                     <Highlight
-                        data={serie}
+                        data={serie!}
                         type={'numberOfSeasons'}
                         descriptionPosition={'bottom'}
                         hasGenre
