@@ -4,34 +4,25 @@ import Highlight, {MovieProps} from "../../components/Highlight/Highlight.tsx";
 import {useEffect, useState} from "react";
 import Background from "../../components/UI/Background.tsx";
 import Loading from "../../components/UI/Loading.tsx";
+import {getPopular} from "../../api/Lists.ts";
+import {chooseItem} from "../../utils/Lists.ts";
+import {getDetails} from "../../api/Details.ts";
 
 function Home() {
     const [movie, setMovie] = useState({} as MovieProps);
     const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
-        requestMovie();
+        requestHighlitedMovie();
     }, []);
 
-    async function requestMovie() {
+    async function requestHighlitedMovie() {
         setIsLoading(true);
-        try {
-            const response = await fetch('https://api.themoviedb.org/3/movie/550?language=pt-Br', {
-                method: 'GET',
-                headers: {
-                    accept: 'application/json',
-                    Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxOGQyZTQ3NTkwMTMyOTE1NjZmYzc4ZDhiN2MxNjg2YSIsInN1YiI6IjY1NDJmM2E2ZWQyYWMyMDExZTRiZGZjYyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.0iESygWdEhVErVrKxGLP7nbBkIn8Y52CAsqFVYb9lVs'
-                },
-            });
-
-            const resData = await response.json();
-            setMovie(resData);
-            setTimeout(() => {
-                setIsLoading(false);
-            }, 500);
-        } catch (e: any) {
-            throw new Error(e.statusText);
-        }
+        const popularMovies = await getPopular('movie');
+        const choosenMovie = chooseItem(popularMovies.results);
+        const movieDetails = await getDetails('movie', choosenMovie.id);
+        setMovie(movieDetails);
+        setIsLoading(false);
     }
 
     return (
