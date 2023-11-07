@@ -1,0 +1,7 @@
+.title {
+    display: flex;
+    gap: 16px;
+    color: var(--neutral-100);
+    margin-inline-start: 80px;
+    margin-block-start: 30px;
+}
