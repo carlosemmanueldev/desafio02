@@ -1,0 +1,10 @@
+.carousel-title {
+    margin-block-end: 10px;
+    color: var(--accent);
+}
+
+.carousel-item-img {
+    width: 300px;
+    height: auto;
+    border-radius: 8px;
+}

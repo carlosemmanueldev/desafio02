@@ -56,3 +56,11 @@ export function getRating(rating: number) {
     return `${rating} `;
 }
 
+export function getMinutes(minutes: number) {
+    if (!minutes) {
+        return "";
+    }
+
+    return `${minutes} min`;
+}
+

@@ -4,14 +4,18 @@ import Highlight from "../../components/Highlight/Highlight.tsx";
 import {useEffect, useState} from "react";
 import Background from "../../components/UI/Background.tsx";
 import Loading from "../../components/UI/Loading.tsx";
-import {getPopular} from "../../api/Lists.ts";
+import {getCollection, getPopular} from "../../api/Lists.ts";
 import {chooseItem} from "../../utils/Lists.ts";
 import {getDetails} from "../../api/Details.ts";
 import {MovieProps} from "../Movies";
+import Carousel from "../../components/Carousel/Carousel.tsx";
 
 function Home() {
     const [movie, setMovie] = useState({} as MovieProps);
     const [isLoading, setIsLoading] = useState(false);
+    const [popularMovies, setPopularMovies] = useState([] as MovieProps[]);
+    const [popularSeries, setPopularSeries] = useState([] as MovieProps[]);
+    const [collection, setcollection] = useState([] as MovieProps[]);
 
     useEffect(() => {
         document.title = "Início"
@@ -20,10 +24,15 @@ function Home() {
 
     async function requestHighlitedMovie() {
         setIsLoading(true);
-        const popularMovies = await getPopular('movie');
-        const choosenMovie = chooseItem(popularMovies.results);
+        const popMovies = await getPopular('movie');
+        setPopularMovies(popMovies.results);
+        const choosenMovie = chooseItem(popMovies.results);
         const movieDetails = await getDetails('movie', choosenMovie.id);
         setMovie(movieDetails);
+        const popSeries = await getPopular('tv');
+        setPopularSeries(popSeries.results);
+        const choosenCollection = await getCollection(10);
+        setcollection(choosenCollection.parts)
         setIsLoading(false);
     }
 
@@ -48,10 +57,9 @@ function Home() {
                 </Background>
 
                 <div className={classes.carousel}>
-                    <Menu/>
-                    <Menu/>
-                    <Menu/>
-                    <Menu/>
+                    <Carousel type='movie' title='Coleção de Star Wars' data={collection}/>
+                    <Carousel type='movie' title='Séries em alta' data={popularSeries}/>
+                    <Carousel type='movie' title='Filmes em alta' data={popularMovies}/>
                 </div>
             </>
     )

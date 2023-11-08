@@ -77,19 +77,20 @@ function Highlight(props: HighlightProps) {
 
     async function toggleFavorite() {
         const id: number = props.data.id;
+        const poster_path: string = props.data.poster_path;
         await manageFavorite(account_id, props.isMovie ? 'movie' : 'tv', id, !favorite)
 
         if (!favorite) {
             dispatch(
                 props.isMovie
-                    ? listActions.addFavoriteMovie({id})
-                    : listActions.addFavoriteTvShow({id})
+                    ? listActions.addFavoriteMovie({id, poster_path})
+                    : listActions.addFavoriteTvShow({id, poster_path})
             );
         } else {
             dispatch(
                 props.isMovie
-                    ? listActions.removeFavoriteMovie({id})
-                    : listActions.removeFavoriteTvShow({id})
+                    ? listActions.removeFavoriteMovie({id, poster_path})
+                    : listActions.removeFavoriteTvShow({id, poster_path})
             );
         }
         setFavorite((prevState) => !prevState);
@@ -97,19 +98,20 @@ function Highlight(props: HighlightProps) {
 
     async function toggleAdded() {
         const id: number = props.data.id;
+        const poster_path: string = props.data.poster_path;
         await manageToWatchList(account_id, props.isMovie ? 'movie' : 'tv', id, !added)
 
         if (!added) {
             dispatch(
                 props.isMovie
-                    ? listActions.addToWatchMovie({id})
-                    : listActions.addToWatchTvShow({id})
+                    ? listActions.addToWatchMovie({id, poster_path})
+                    : listActions.addToWatchTvShow({id, poster_path})
             );
         } else {
             dispatch(
                 props.isMovie
-                    ? listActions.removeToWatchMovie({id})
-                    : listActions.removeToWatchTvShow({id})
+                    ? listActions.removeToWatchMovie({id, poster_path})
+                    : listActions.removeToWatchTvShow({id, poster_path})
             );
         }
         setAdded((prevState) => !prevState);
