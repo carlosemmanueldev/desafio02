@@ -1,4 +1,4 @@
-<h1>Sistema de Gerenciamento de EPI's</h1>
+<h1>Compass Streaming</h1>
 <img src="https://i.imgur.com/xsjJPzy.png"/>
 
 
