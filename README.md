@@ -1,27 +1,29 @@
-# React + TypeScript + Vite
+<h1>Sistema de Gerenciamento de EPI's</h1>
+<img asrc="https://i.imgur.com/xsjJPzy.png"/>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
+<h3>Equipe:   
+   <a href = "https://github.com/carlosemmanueldev">Carlos Emmanuel</a> |
+   <a href = "https://github.com/dierony-sousa">Dierony Sousa</a> |
+   <a href = "https://github.com/jvictorcordeiro">João V. Cordeiro</a> |
+   <a href = "https://github.com/TayaneCibely">Tayane Cibely</a>
+</h3>
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## Expanding the ESLint configuration
+<h1>Sobre o Projeto:</h1>
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+<h4>Projeto para o Programa de Bolsas Compass UOL frontend para implementação de um streaming fictício a partir da api TMDB, com infomações sobre filmes, séries e atores. </h4>
+   
+   
+<h1>Artefatos:</h1>
 
-- Configure the top-level `parserOptions` property like this:
+<h3><a href = "https://www.figma.com/file/Jz1kalLo4N6bnNDrYjgpBR/Compass-Video---Challenge-II?type=design&node-id=9%3A114&mode=design&t=tRGVyXucEFGkDJTh-1" target="_blank">Protótipo</a></h3>
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
+<h1>Tecnologias Usadas:</h1>
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+<h3>React</h3>
+<h3>TypeScript</h3>
+<h3>Vite</h3>
+
+<h1>Status do projeto:</h1>
+<h4>Em andamento</h4>
