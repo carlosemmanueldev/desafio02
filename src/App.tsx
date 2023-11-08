@@ -9,6 +9,8 @@ import Search from "./pages/Search";
 import MyList from "./pages/MyList";
 import PrivateRoute from "./private-routes/PrivateRoute.tsx";
 import Approved from "./pages/Login/approved.tsx";
+import Movie from "./pages/Movies/movie.tsx";
+import Seasons from "./pages/TvShows/Seasons.tsx";
 
 function App() {
     return (
@@ -19,7 +21,10 @@ function App() {
                 <Route path="/" element={<PrivateRoute component={Home} />} />
                 <Route path="/actors" element={<PrivateRoute component={Actors} />} />
                 <Route path="/tvshows" element={<PrivateRoute component={TvShows} />} />
+                <Route path="/tvshow/:id/season/:season" element={<PrivateRoute component={TvShows} />} />
+                <Route path="/tvshow/seasons/:id" element={<PrivateRoute component={Seasons} />} />
                 <Route path="/movies" element={<PrivateRoute component={Movies} />} />
+                <Route path="/movie/:id" element={<PrivateRoute component={Movie} />} />
                 <Route path="/collections" element={<PrivateRoute component={Collections} />} />
                 <Route path="/search" element={<PrivateRoute component={Search} />} />
                 <Route path="/mylist" element={<PrivateRoute component={MyList} />} />

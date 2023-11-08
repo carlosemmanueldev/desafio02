@@ -18,7 +18,7 @@ function Login() {
                     <Link className={'body-small'} to={'/approved'}>Acesse como convidado</Link>
                 </div>
 
-                <img src={logo} alt="logo"/>
+                <img className={classes['login-img']} src={logo} alt="logo"/>
             </div>
         </div>
     );

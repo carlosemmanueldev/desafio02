@@ -58,7 +58,7 @@ a:hover {
     color: var(--neutral-200);
 }
 
-img {
+.login-img {
     width: 50%;
     height: 15%;
     object-fit: cover;

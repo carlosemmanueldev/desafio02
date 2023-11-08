@@ -5,3 +5,12 @@
     margin-inline-start: 80px;
     margin-block-start: 30px;
 }
+
+.carousel {
+    background-color: #1A1D29;
+    padding-inline-start: 80px;
+    padding-block-end: 56px;
+    gap: 56px;
+    display: flex;
+    flex-direction: column;
+}
