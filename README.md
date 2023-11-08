@@ -25,5 +25,14 @@
 <h3>TypeScript</h3>
 <h3>Vite</h3>
 
+<h1>Como executar:</h1>
+1- Instale as dependências
+
+    -npm install
+
+2- Execute o ambiente de desenvolvimento
+
+    -npm run dev
+
 <h1>Status do projeto:</h1>
 <h4>Em andamento</h4>
