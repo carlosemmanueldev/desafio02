@@ -1,5 +1,5 @@
 <h1>Sistema de Gerenciamento de EPI's</h1>
-<img asrc="https://i.imgur.com/xsjJPzy.png"/>
+<img src="https://i.imgur.com/xsjJPzy.png"/>
 
 
 <h3>Equipe:   
