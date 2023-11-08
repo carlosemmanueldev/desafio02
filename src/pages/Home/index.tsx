@@ -58,7 +58,7 @@ function Home() {
 
                 <div className={classes.carousel}>
                     <Carousel type='movie' title='Coleção de Star Wars' data={collection}/>
-                    <Carousel type='movie' title='Séries em alta' data={popularSeries}/>
+                    <Carousel type='tvshow/seasons' title='Séries em alta' data={popularSeries}/>
                     <Carousel type='movie' title='Filmes em alta' data={popularMovies}/>
                 </div>
             </>
