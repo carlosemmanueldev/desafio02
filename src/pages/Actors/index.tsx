@@ -8,10 +8,12 @@ import Background from "../../components/UI/Background.tsx";
 import Menu from "../../components/Menu";
 import Highlight from "../../components/Highlight/Highlight.tsx";
 import classes from "../Home/Home.module.css";
+import Carousel from "../../components/Carousel/Carousel.tsx";
 
 function Actors(){
     const [isLoading, setIsLoading] = useState(false);
     const [movie, setMovie] = useState({} as MovieProps);
+    const [popularMovies, setPopularMovies] = useState([] as MovieProps[]);
 
     useEffect(() => {
         document.title = "Celebridades"
@@ -21,6 +23,7 @@ function Actors(){
     async function requestHighlitedMovie() {
         setIsLoading(true);
         const popularMovies = await getPopular('movie');
+        setPopularMovies(popularMovies.results)
         const choosenMovie = chooseItem(popularMovies.results);
         const movieDetails = await getDetails('movie', choosenMovie.id);
         setMovie(movieDetails);
@@ -48,10 +51,9 @@ function Actors(){
                 </Background>
 
                 <div className={classes.carousel}>
-                    <Menu/>
-                    <Menu/>
-                    <Menu/>
-                    <Menu/>
+                    <Carousel type='movie' title='Populares' data={popularMovies}/>
+                    <Carousel type='movie' title='Populares' data={popularMovies}/>
+                    <Carousel type='movie' title='Populares' data={popularMovies}/>
                 </div>
             </>
     )
