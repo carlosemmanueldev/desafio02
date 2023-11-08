@@ -47,8 +47,7 @@ function Carousel<T extends MovieProps | SerieProps | SeasonProps>({type, title,
             <Splide options={splideOptions}>
                 {data.map((item) => (
                     <SplideSlide key={item.id}>
-
-                        <Link to={link}>
+                        <Link to={`/${type}/${item.id}`}>
                             <div className={classes['carousel-item']}>
                                 <img className={classes['carousel-item-img']} src={IMG_BASE_URL + item.poster_path}
                                      alt={item.media_type === 'movie' ? (item as MovieProps).title : (item as SerieProps | SeasonProps).name}/>
