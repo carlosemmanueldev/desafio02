@@ -1,15 +1,6 @@
 <h1>Compass Streaming</h1>
 <img src="https://i.imgur.com/xsjJPzy.png"/>
 
-
-<h3>Equipe:   
-   <a href = "https://github.com/carlosemmanueldev">Carlos Emmanuel</a> |
-   <a href = "https://github.com/dierony-sousa">Dierony Sousa</a> |
-   <a href = "https://github.com/jvictorcordeiro">João V. Cordeiro</a> |
-   <a href = "https://github.com/TayaneCibely">Tayane Cibely</a>
-</h3>
-
-
 <h1>Sobre o Projeto:</h1>
 
 <h4>Projeto para o Programa de Bolsas Compass UOL frontend para implementação de um streaming fictício a partir da api TMDB, com infomações sobre filmes, séries e atores. </h4>
